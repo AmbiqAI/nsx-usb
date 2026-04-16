@@ -73,8 +73,10 @@ void tud_cdc_line_state_cb(uint8_t itf, bool dtr, bool rts) {
 /* Vendor (WebUSB) callbacks                                           */
 /* ------------------------------------------------------------------ */
 
-void tud_vendor_rx_cb(uint8_t itf) {
+void tud_vendor_rx_cb(uint8_t itf, uint8_t const *buffer, uint16_t bufsize) {
     (void)itf;
+    (void)buffer;
+    (void)bufsize;
     if (g_usb_cfg != NULL) {
         g_usb_cfg->_vendor_rx_ready = 1;
         if (g_usb_cfg->vendor_rx_cb != NULL) {
