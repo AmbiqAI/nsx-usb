@@ -2,25 +2,49 @@ schema_version: 1
 module:
   name: nsx-usb
   type: backend_specific
-  version: "0.1.0"
+  version: 0.1.1
 support:
   ambiqsuite: true
   zephyr: false
-summary: USB CDC serial driver for Ambiq SoCs using TinyUSB, with proper error handling and no debug prints in driver code.
-capabilities: [usb, cdc, serial, tinyusb]
+summary: >-
+  USB CDC serial driver for Ambiq SoCs using TinyUSB, with proper error handling
+  and no debug prints in driver code.
+capabilities:
+  - usb
+  - cdc
+  - serial
+  - tinyusb
 use_cases:
   - Host-device serial link over USB CDC
   - Streaming sensor or audio data to a PC
   - Console I/O over USB
-agent_keywords: [usb, cdc, serial, tinyusb, host]
+agent_keywords:
+  - usb
+  - cdc
+  - serial
+  - tinyusb
+  - host
 build:
   cmake:
     package: nsx_usb
-    targets: [nsx::usb]
+    targets:
+      - nsx::usb
 depends:
-  required: [nsx-core, nsx-harness, nsx-utils, nsx-soc-hal, nsx-ambiqsuite-r5]
+  required:
+    - nsx-core
+    - nsx-harness
+    - nsx-utils
+    - nsx-soc-hal
+    - nsx-ambiqsuite-r5
   optional: []
 compatibility:
-  boards: ["*"]
-  socs: [apollo5b, apollo510, apollo510b, apollo4p]
-  toolchains: [arm-none-eabi-gcc, armclang]
+  boards:
+    - '*'
+  socs:
+    - apollo5b
+    - apollo510
+    - apollo510b
+    - apollo4p
+  toolchains:
+    - arm-none-eabi-gcc
+    - armclang
